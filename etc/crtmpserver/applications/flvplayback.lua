@@ -1,0 +1,34 @@
+application=
+{
+        description="FLV Playback Sample",
+        name="flvplayback",
+        protocol="dynamiclinklibrary",
+        mediaFolder="/var/lib/crtmpserver/mediaFolder",
+        aliases=
+        {
+                "simpleLive",
+                "vod",
+                "live",
+                "WeeklyQuest",
+                "SOSample",
+                "oflaDemo",
+        },
+        acceptors =
+        {
+                {
+                        ip="0.0.0.0",
+                        port=6666,
+                        protocol="inboundLiveFlv",
+                        waitForMetadata=true,
+                },
+                {
+                        ip="0.0.0.0",
+                        port=554,
+                        protocol="inboundRtsp"
+                },
+        },
+        validateHandshake=false,
+ keyframeSeek=false,
+ seekGranularity=0.1,
+ clientSideBuffer=30,
+}

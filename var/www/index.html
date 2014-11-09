@@ -1,0 +1,41 @@
+<!doctype html>
+
+<head>
+   <!-- player skin -->
+   <link rel="stylesheet" href="skin/minimalist.css">
+
+   <!-- site specific styling -->
+   <style>
+   body { font: 12px "Myriad Pro", "Lucida Grande", sans-serif; text-align: center; padding-top: 5%; }
+   .flowplayer { max-width: 1280px; }
+   </style>
+
+   <!-- flowplayer depends on jQuery 1.7.1+ (for now) -->
+   <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+   <!-- include flowplayer -->
+   <script src="flowplayer.min.js"></script>
+</head>
+
+<body>
+   <!-- the player -->
+   <div class="flowplayer" data-swf="flowplayer.swf" data-ratio="0.5625" >
+      <video autoplay>
+         <source type="video/flash" src="livestream">
+      </video>
+   </div>
+
+<script>
+flowplayer(function (api) {
+  // work around autoplay live stream bug in Flash engine
+  api.bind("ready", function (e, api) {
+    api.resume();
+  });
+});
+
+$(".flowplayer").flowplayer({
+   live: true,
+   rtmp: 'rtmp://'+window.location.host+'/live'
+});
+</script>
+</body>
